@@ -16,17 +16,27 @@ class CryptoListViewController: UIViewController, CryptoListViewProtocol {
     @IBOutlet weak var myCollectionView: UICollectionView!
     var cryotos = [CryptoListItem]()
     private var cryptoModel = CryptoListModel()
+    let refreshControl = UIRefreshControl()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         fecthData()
     }
+    
+    @objc private func refreshData(_ sender: Any) {
+        fecthData()
+        self.refreshControl.endRefreshing()
+    }
 
     private func setupUI(){
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myCollectionView.register(.init(nibName: "CryptoInfoCell", bundle: nil), forCellWithReuseIdentifier: "CryptoInfoCell")
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+           refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+           myCollectionView.addSubview(refreshControl) 
     }
     
     private func fecthData(){
@@ -34,7 +44,7 @@ class CryptoListViewController: UIViewController, CryptoListViewProtocol {
             switch conStatus{
             case .success:
                 self?.cryotos = data.compactMap({
-                    return CryptoListItem(name: $0.name, image: $0.image,currentPrice: $0.currentPrice)                })
+                    return CryptoListItem(name: $0.name, image: $0.image,currentPrice: $0.currentPrice,lastUpdated: $0.lastUpdated)                })
                 
                 DispatchQueue.main.async {
                     self?.myCollectionView.reloadData()
@@ -66,13 +76,27 @@ extension CryptoListViewController: UICollectionViewDataSource,UICollectionViewD
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CryptoInfoCell", for: indexPath) as? CryptoInfoCell{
             cell.imageView.kf.setImage(with: URL(string: crypto.image))
             cell.nameLabel.text = crypto.name
-            cell.priceLabel.text = "\(crypto.currentPrice)"
+            cell.priceLabel.text = "$\(crypto.currentPrice)"
+            cell.currencyLabel.text = getDateFormated(crypto.lastUpdated)
             return cell
         }else{
             return UICollectionViewCell()
         }
     }
     
+    private func getDateFormated(_ date:String) -> String{
+        let dateFormatter =  ISO8601DateFormatter()
+        dateFormatter.formatOptions.insert(.withFractionalSeconds)
+        let date = dateFormatter.date(from: date) ?? Date()
+        let outDateFormatter: DateFormatter = {
+             let df = DateFormatter()
+             df.dateFormat = "dd-MM-yyyy HH:mm"
+             df.locale = Locale(identifier: "en_US_POSIX")
+             return df
+         }()
+        let formattedString = outDateFormatter.string(from: date)
+        return "\(formattedString)"
+    }
 }
 
 
