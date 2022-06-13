@@ -8,17 +8,13 @@
 import Foundation
 
 struct CryptoListItem: Codable {
-    var id, currency, symbol, name: String
-    var logoURL: String
-    var price: String
+    var  name: String
+    var image: String
+    var currentPrice: Double
 
     enum CodingKeys: String, CodingKey {
-        case id, currency, symbol, name
-        case logoURL = "logo_url"
-        case price
+        case  name, image
+        case currentPrice = "current_price"
     }
 }
 
-enum Status: String, Codable {
-    case active = "active"
-}

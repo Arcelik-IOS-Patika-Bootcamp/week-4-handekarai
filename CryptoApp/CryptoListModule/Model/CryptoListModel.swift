@@ -7,22 +7,13 @@
 
 import Foundation
 
-protocol CryptoListModelDelegate: AnyObject{
-    
-    func didDataFetch(_ items: [CryptoListItem])
-}
 
 class CryptoListModel{
     
-    private let apiKey = "f55d9e79dbd8f1cc8c2452d627dcbca1be4e28d1"
-    private let cryptoApiEndpointURL = "https://api.nomics.com/v1/"
-    
-    weak var delegate: CryptoListModelDelegate?
-    
-
+    private let cryptoApiEndpointURL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc"
     
     func fetchData(completion: @escaping (([CryptoListItem],ConnectionStatus) -> ())){
-        if let url = URL.init(string: cryptoApiEndpointURL + "currencies/ticker?key=" + apiKey){
+        if let url = URL.init(string: cryptoApiEndpointURL){
             let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
               
               do {

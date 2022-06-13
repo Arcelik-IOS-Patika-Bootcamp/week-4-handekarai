@@ -34,8 +34,7 @@ class CryptoListViewController: UIViewController, CryptoListViewProtocol {
             switch conStatus{
             case .success:
                 self?.cryotos = data.compactMap({
-                    return CryptoListItem(id: $0.name, currency: $0.currency, symbol: $0.name, name: $0.name, logoURL: $0.logoURL, price: $0.price)
-                })
+                    return CryptoListItem(name: $0.name, image: $0.image,currentPrice: $0.currentPrice)                })
                 
                 DispatchQueue.main.async {
                     self?.myCollectionView.reloadData()
@@ -65,11 +64,9 @@ extension CryptoListViewController: UICollectionViewDataSource,UICollectionViewD
         let crypto = cryotos[indexPath.row]
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CryptoInfoCell", for: indexPath) as? CryptoInfoCell{
-            print(crypto.logoURL)
-            cell.imageView.kf.setImage(with: URL(string: crypto.logoURL))
+            cell.imageView.kf.setImage(with: URL(string: crypto.image))
             cell.nameLabel.text = crypto.name
-            cell.priceLabel.text = crypto.price
-            cell.currencyLabel.text = crypto.currency
+            cell.priceLabel.text = "\(crypto.currentPrice)"
             return cell
         }else{
             return UICollectionViewCell()
@@ -90,12 +87,3 @@ extension CryptoListViewController: UICollectionViewDelegateFlowLayout{
     
 }
 
-extension CryptoListViewController: CryptoListModelDelegate{
-    func didDataFetch(_ items: [CryptoListItem]) {
-        print("here")
-        cryotos = items
-        DispatchQueue.main.async {
-            self.myCollectionView?.reloadData()
-        }
-    }
-}
