@@ -9,24 +9,23 @@ import UIKit
 import Kingfisher
 
 
-class CryptoListViewController: UIViewController, CryptoListViewProtocol {
-    
-    var presenter: CryptoList.Presenter!
-    
+class CryptoListView: UIViewController, CryptoList.View {
+        
     @IBOutlet weak var myCollectionView: UICollectionView!
+    
     var cryotos = [CryptoListItem]()
-    private var cryptoModel = CryptoListModel()
     let refreshControl = UIRefreshControl()
+    var presenter: CryptoList.Presenter!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        fecthData()
+        presenter.viewDidLoad()
     }
     
     @objc private func refreshData(_ sender: Any) {
-        fecthData()
+        presenter.viewDidLoad()
         self.refreshControl.endRefreshing()
     }
 
@@ -39,32 +38,9 @@ class CryptoListViewController: UIViewController, CryptoListViewProtocol {
            myCollectionView.addSubview(refreshControl) 
     }
     
-    private func fecthData(){
-        cryptoModel.fetchData{ [weak self] data,conStatus  in
-            switch conStatus{
-            case .success:
-                self?.cryotos = data.compactMap({
-                    return CryptoListItem(name: $0.name, image: $0.image,currentPrice: $0.currentPrice,lastUpdated: $0.lastUpdated)                })
-                
-                DispatchQueue.main.async {
-                    self?.myCollectionView.reloadData()
-                }
-            case .error:
-                print("eroor")
-            }
-        }
-    }
-    
-    
-    func updateCollectionItems(_ items: [CryptoListItem]) {
-        cryotos = items
-        myCollectionView?.reloadData()
-    }
-    
-    
 }
 
-extension CryptoListViewController: UICollectionViewDataSource,UICollectionViewDelegate{
+extension CryptoListView: UICollectionViewDataSource,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cryotos.count
@@ -100,7 +76,7 @@ extension CryptoListViewController: UICollectionViewDataSource,UICollectionViewD
 }
 
 
-extension CryptoListViewController: UICollectionViewDelegateFlowLayout{
+extension CryptoListView: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width - 16.0 * 2
@@ -111,3 +87,10 @@ extension CryptoListViewController: UICollectionViewDelegateFlowLayout{
     
 }
 
+//MARK: - Presenter Related
+extension CryptoListView{
+    func updateCollectionItems(_ items: [CryptoListItem]) {
+        cryotos = items
+        myCollectionView?.reloadData()
+    }
+}
