@@ -26,16 +26,18 @@ class CryptoListView: UIViewController, CryptoList.View {
     
     @objc private func refreshData(_ sender: Any) {
         presenter.viewDidLoad()
-        self.refreshControl.endRefreshing()
+        refreshControl.endRefreshing()
     }
 
     private func setupUI(){
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myCollectionView.register(.init(nibName: "CryptoInfoCell", bundle: nil), forCellWithReuseIdentifier: "CryptoInfoCell")
+        
+        //set scroll down refresh
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-           refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-           myCollectionView.addSubview(refreshControl) 
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        myCollectionView.addSubview(refreshControl)
     }
     
 }
@@ -46,32 +48,22 @@ extension CryptoListView: UICollectionViewDataSource,UICollectionViewDelegate{
         return cryotos.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let crypto = cryotos[indexPath.row]
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CryptoInfoCell", for: indexPath) as? CryptoInfoCell{
             cell.imageView.kf.setImage(with: URL(string: crypto.image))
             cell.nameLabel.text = crypto.name
             cell.priceLabel.text = "$\(crypto.currentPrice)"
-            cell.currencyLabel.text = getDateFormated(crypto.lastUpdated)
+            cell.lastUpdatedLabel.text = crypto.lastUpdated
+            cell.priceChangePercentage.text = "%\(crypto.priceChangePercentage24H)"
+            cell.priceChangePercentage.textColor = crypto.priceChangePercentage24H > 0 ? .systemGreen : .systemRed
             return cell
         }else{
             return UICollectionViewCell()
         }
-    }
-    
-    private func getDateFormated(_ date:String) -> String{
-        let dateFormatter =  ISO8601DateFormatter()
-        dateFormatter.formatOptions.insert(.withFractionalSeconds)
-        let date = dateFormatter.date(from: date) ?? Date()
-        let outDateFormatter: DateFormatter = {
-             let df = DateFormatter()
-             df.dateFormat = "dd-MM-yyyy HH:mm"
-             df.locale = Locale(identifier: "en_US_POSIX")
-             return df
-         }()
-        let formattedString = outDateFormatter.string(from: date)
-        return "\(formattedString)"
     }
 }
 
@@ -84,7 +76,6 @@ extension CryptoListView: UICollectionViewDelegateFlowLayout{
         
         return CGSize(width: width, height: height)
     }
-    
 }
 
 //MARK: - Presenter Related

@@ -39,7 +39,6 @@ protocol CryptoListInteractorProtocol: AnyObject{
 //protocol CryptoListRouterProtocol: AnyObject{
 //
 //    var presenter: CryptoList.Presenter? { get set }
-//  //  func navigateToDetail(with customObject: Object)
 //}
 
 struct CryptoList{

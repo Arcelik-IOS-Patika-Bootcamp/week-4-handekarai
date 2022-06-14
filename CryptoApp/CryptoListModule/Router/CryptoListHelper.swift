@@ -10,7 +10,7 @@ import UIKit
 extension CryptoList{
     
     static func createModule() -> UIViewController?{
-        if let view = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CryptoListView") as? CryptoListView{
+        if let view = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CryptoListView") as? CryptoListView{
             let presenter = CryptoListPresenter()
             let interactor = CryptoListInteractor()
             

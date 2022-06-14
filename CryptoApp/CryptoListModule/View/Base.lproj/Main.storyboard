@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIj-aG-ETg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tsh-Lg-Uxc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2rD-pv-oPy">
                                     <size key="itemSize" width="400" height="120"/>
@@ -37,14 +37,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crypto List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-EN-hla">
+                                <rect key="frame" x="20" y="57" width="374" height="49"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="1" height="2"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tsh-Lg-Uxc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0eY-JM-VLs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KBe-EN-hla" secondAttribute="trailing" constant="20" id="DsN-jY-LPj"/>
+                            <constraint firstItem="KBe-EN-hla" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="OIV-7q-EgD"/>
+                            <constraint firstItem="tsh-Lg-Uxc" firstAttribute="top" secondItem="KBe-EN-hla" secondAttribute="bottom" constant="8" id="Owq-rF-B1p"/>
+                            <constraint firstItem="KBe-EN-hla" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SdQ-C6-kKe"/>
                             <constraint firstItem="tsh-Lg-Uxc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tyo-CK-a3g"/>
                             <constraint firstItem="tsh-Lg-Uxc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iqU-iJ-3d4"/>
-                            <constraint firstItem="tsh-Lg-Uxc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wdS-Uk-KVe"/>
+                            <constraint firstItem="tsh-Lg-Uxc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="wdS-Uk-KVe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Crypto List" id="20i-2l-SJ1"/>
@@ -54,55 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1699" y="84"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CJR-gX-yd2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WIj-aG-ETg" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="03r-u6-rMz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="jjP-YK-BY3" kind="relationship" relationship="rootViewController" id="ZAT-6X-Ghe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8yf-SS-eGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
-        </scene>
-        <!--Temp View Controller-->
-        <scene sceneID="axi-rb-S8N">
-            <objects>
-                <viewController storyboardIdentifier="TempViewController" id="jjP-YK-BY3" customClass="TempViewController" customModule="CryptoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0cU-Pk-Roa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zay-Zw-QXP">
-                                <rect key="frame" x="140" y="432.5" width="134" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Go to Crypto List"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="jjP-YK-BY3" eventType="touchUpInside" id="Wa5-hp-v65"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="4Et-8G-9JJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Zay-Zw-QXP" firstAttribute="centerX" secondItem="0cU-Pk-Roa" secondAttribute="centerX" id="935-Rw-sOh"/>
-                            <constraint firstItem="Zay-Zw-QXP" firstAttribute="centerY" secondItem="0cU-Pk-Roa" secondAttribute="centerY" id="OY9-x2-rQa"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="NeW-sY-Ia2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m4m-Vv-GYA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="848" y="84"/>
+            <point key="canvasLocation" x="1698.5507246376812" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>
