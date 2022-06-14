@@ -14,56 +14,56 @@
             <rect key="frame" x="0.0" y="0.0" width="507" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RY1-d1-gv6">
+                    <rect key="frame" x="5" y="0.0" width="62" height="89"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="62" id="Ouk-8a-ktE"/>
+                    </constraints>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8a-sN-wxf">
-                    <rect key="frame" x="70" y="52" width="31" height="15"/>
+                    <rect key="frame" x="75" y="50" width="31" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmK-Iq-NPR">
-                    <rect key="frame" x="70" y="23" width="41.5" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmK-Iq-NPR">
+                    <rect key="frame" x="70" y="6" width="42" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrS-Ul-z9S">
-                    <rect key="frame" x="236" y="0.0" width="271" height="55"/>
+                    <rect key="frame" x="461" y="0.0" width="41" height="38"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txP-Gy-F01">
-                    <rect key="frame" x="236" y="49" width="271" height="21"/>
+                    <rect key="frame" x="471" y="50" width="31" height="14"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RY1-d1-gv6">
-                    <rect key="frame" x="0.0" y="0.0" width="62" height="89"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="62" id="xhJ-5I-N4s"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="txP-Gy-F01" firstAttribute="leading" secondItem="RY1-d1-gv6" secondAttribute="trailing" constant="174" id="0VO-98-xXO"/>
-                <constraint firstAttribute="bottom" secondItem="RY1-d1-gv6" secondAttribute="bottom" id="4DB-UQ-DZS"/>
-                <constraint firstAttribute="bottom" secondItem="txP-Gy-F01" secondAttribute="bottom" constant="19" id="AIS-9D-b8g"/>
-                <constraint firstItem="CmK-Iq-NPR" firstAttribute="leading" secondItem="RY1-d1-gv6" secondAttribute="trailing" constant="8" id="O9a-ee-2XU"/>
-                <constraint firstItem="RY1-d1-gv6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RCt-hB-Ip9"/>
-                <constraint firstItem="F8a-sN-wxf" firstAttribute="top" secondItem="CmK-Iq-NPR" secondAttribute="bottom" constant="8" symbolic="YES" id="VkJ-5t-bJj"/>
-                <constraint firstItem="RY1-d1-gv6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fTS-ME-wWt"/>
-                <constraint firstItem="CmK-Iq-NPR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="fkU-3H-KH3"/>
-                <constraint firstItem="vrS-Ul-z9S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gc2-98-8ky"/>
-                <constraint firstAttribute="bottom" secondItem="vrS-Ul-z9S" secondAttribute="bottom" constant="34" id="hMa-8A-EWO"/>
-                <constraint firstAttribute="trailing" secondItem="vrS-Ul-z9S" secondAttribute="trailing" id="rwG-IU-xZn"/>
-                <constraint firstItem="F8a-sN-wxf" firstAttribute="leading" secondItem="RY1-d1-gv6" secondAttribute="trailing" constant="8" id="swV-qg-dZI"/>
-                <constraint firstAttribute="bottom" secondItem="F8a-sN-wxf" secondAttribute="bottom" constant="22" id="sxT-6F-dtp"/>
-                <constraint firstItem="txP-Gy-F01" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tf5-bs-YbL"/>
-                <constraint firstItem="txP-Gy-F01" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="49" id="v4Z-wJ-zK4"/>
-                <constraint firstItem="vrS-Ul-z9S" firstAttribute="leading" secondItem="RY1-d1-gv6" secondAttribute="trailing" constant="174" id="xge-R6-uqV"/>
+                <constraint firstAttribute="trailing" secondItem="vrS-Ul-z9S" secondAttribute="trailing" constant="5" id="11o-Hm-4dN"/>
+                <constraint firstItem="F8a-sN-wxf" firstAttribute="leading" secondItem="RY1-d1-gv6" secondAttribute="trailing" constant="8" symbolic="YES" id="5qy-av-6WM"/>
+                <constraint firstAttribute="bottom" secondItem="RY1-d1-gv6" secondAttribute="bottom" id="A9H-W3-2Hq"/>
+                <constraint firstItem="CmK-Iq-NPR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="11" id="BuM-dU-1yd"/>
+                <constraint firstItem="CmK-Iq-NPR" firstAttribute="leading" secondItem="RY1-d1-gv6" secondAttribute="trailing" constant="8" symbolic="YES" id="K96-jf-Drt"/>
+                <constraint firstAttribute="bottom" secondItem="RY1-d1-gv6" secondAttribute="bottom" id="O56-U1-SKU"/>
+                <constraint firstAttribute="trailing" secondItem="vrS-Ul-z9S" secondAttribute="trailing" constant="5" id="Ogt-qD-W43"/>
+                <constraint firstAttribute="bottom" secondItem="txP-Gy-F01" secondAttribute="bottom" constant="25" id="b8j-M3-M44"/>
+                <constraint firstItem="CmK-Iq-NPR" firstAttribute="centerY" secondItem="vrS-Ul-z9S" secondAttribute="centerY" constant="-1" id="dlK-Ce-ZcS"/>
+                <constraint firstItem="vrS-Ul-z9S" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="-17" id="ebC-oo-aD8"/>
+                <constraint firstItem="RY1-d1-gv6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fYJ-QY-5U0"/>
+                <constraint firstItem="RY1-d1-gv6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="hZA-tC-2s5"/>
+                <constraint firstItem="RY1-d1-gv6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="k4M-wR-zXZ"/>
+                <constraint firstItem="txP-Gy-F01" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-5" id="sn8-FI-2N2"/>
+                <constraint firstItem="vrS-Ul-z9S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="syl-nd-RZF"/>
+                <constraint firstAttribute="bottom" secondItem="F8a-sN-wxf" secondAttribute="bottom" constant="24" id="zE6-t6-Dwj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
