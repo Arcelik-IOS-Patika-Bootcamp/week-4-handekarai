@@ -8,12 +8,11 @@
 import UIKit
 import Kingfisher
 
-
 class CryptoListView: UIViewController, CryptoList.View {
         
     @IBOutlet weak var myCollectionView: UICollectionView!
     
-    var cryotos = [CryptoListItem]()
+    var cryptosList = [CryptoListItem]()
     let refreshControl = UIRefreshControl()
     var presenter: CryptoList.Presenter!
 
@@ -24,6 +23,7 @@ class CryptoListView: UIViewController, CryptoList.View {
         presenter.viewDidLoad()
     }
     
+    // after scroll down triggered , this func runs to refresh list
     @objc private func refreshData(_ sender: Any) {
         presenter.viewDidLoad()
         refreshControl.endRefreshing()
@@ -34,7 +34,7 @@ class CryptoListView: UIViewController, CryptoList.View {
         myCollectionView.dataSource = self
         myCollectionView.register(.init(nibName: "CryptoInfoCell", bundle: nil), forCellWithReuseIdentifier: "CryptoInfoCell")
         
-        //set scroll down refresh
+        // settings for scroll down refresh
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         myCollectionView.addSubview(refreshControl)
@@ -45,15 +45,17 @@ class CryptoListView: UIViewController, CryptoList.View {
 extension CryptoListView: UICollectionViewDataSource,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cryotos.count
+        return cryptosList.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let crypto = cryotos[indexPath.row]
+        let crypto = cryptosList[indexPath.row]
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CryptoInfoCell", for: indexPath) as? CryptoInfoCell{
+            
+            // cell fields settings
             cell.imageView.kf.setImage(with: URL(string: crypto.image))
             cell.nameLabel.text = crypto.name
             cell.priceLabel.text = "$\(crypto.currentPrice)"
@@ -64,6 +66,11 @@ extension CryptoListView: UICollectionViewDataSource,UICollectionViewDelegate{
         }else{
             return UICollectionViewCell()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let crypto = cryptosList[indexPath.row]
+        presenter.didUserPressItem(crypto)
     }
 }
 
@@ -81,7 +88,7 @@ extension CryptoListView: UICollectionViewDelegateFlowLayout{
 //MARK: - Presenter Related
 extension CryptoListView{
     func updateCollectionItems(_ items: [CryptoListItem]) {
-        cryotos = items
+        cryptosList = items
         myCollectionView?.reloadData()
     }
 }

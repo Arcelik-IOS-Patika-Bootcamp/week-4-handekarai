@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+// contract for viper pattern
 
 protocol CryptoListViewProtocol: AnyObject{
     
@@ -18,10 +21,10 @@ protocol CryptoListPresenterProtocol: AnyObject{
     
     var view : CryptoList.View? { get set }
     var interactor: CryptoList.Interactor! { get set }
-//    var router: CryptoList.Router! { get set }
+    var router: CryptoList.Router! { get set }
     
     func viewDidLoad()
-    func didUserPressItem()
+    func didUserPressItem(_ item : CryptoListItem)
     func didDataFetch()
 }
 
@@ -31,20 +34,20 @@ protocol CryptoListInteractorProtocol: AnyObject{
     var data: [CryptoListItem]? { get }
     
     func fetchData()
-
 }
 
-//protocol CryptoListEntitiyProtocol: AnyObject{ }
-//
-//protocol CryptoListRouterProtocol: AnyObject{
-//
-//    var presenter: CryptoList.Presenter? { get set }
-//}
+protocol CryptoListRouterProtocol: AnyObject{
+    
+    var presenter: CryptoList.Presenter? { get set }
+    
+    static func createModule() -> UIViewController?
+    func openDetail()
+}
 
+// alias for protocols
 struct CryptoList{
     typealias View = CryptoListViewProtocol
     typealias Presenter = CryptoListPresenterProtocol
     typealias Interactor = CryptoListInteractorProtocol
-//    typealias Entitiy = CryptoListEntitiyProtocol
-//    typealias Router = CryptoListRouterProtocol
+    typealias Router = CryptoListRouterProtocol
 }

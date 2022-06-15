@@ -9,7 +9,7 @@ import UIKit
 
 class CryptoInfoCell: UICollectionViewCell {
 
-    
+    // collection view cell fields
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

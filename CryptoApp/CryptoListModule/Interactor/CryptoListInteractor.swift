@@ -11,9 +11,10 @@ class CryptoListInteractor: CryptoList.Interactor{
     
     private let cryptoApiEndpointURL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc"
     
-    var presenter: CryptoList.Presenter?
+    weak var presenter: CryptoList.Presenter?
     var data: [CryptoListItem]?
     
+    // fetchs data from given api url
     func fetchData() {
         if let url = URL.init(string: cryptoApiEndpointURL){
             let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
@@ -26,6 +27,7 @@ class CryptoListInteractor: CryptoList.Interactor{
                 let object = try JSONDecoder().decode([CryptoListItem].self, from: data)
                 
                   self?.data = object
+                  
                   DispatchQueue.main.async {
                       self?.presenter?.didDataFetch()
                   }
