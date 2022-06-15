@@ -15,4 +15,5 @@ Herhangi bir api yi kullanmak serbest
 
 The app shows list of coins, and it looks like this.
 
-![simulator_screenshot_6C6205B8-BF04-453D-A861-5D6377280F81](https://user-images.githubusercontent.com/3129441/173829439-f09cd2ce-86db-4c18-97cf-404147e4365e.png)
+
+<img src="https://user-images.githubusercontent.com/3129441/173830858-5d12f025-4c4d-46ce-b44c-bd5ef253e4e6.png" width="200">
